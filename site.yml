@@ -10,12 +10,13 @@
         recursive: yes
 
     - name: Собрать Fluentd образ (с Prometheus-плагином)
-      community.docker.docker_image:
+      docker_image:
+        name: fluentd-custom
+        source: build
         build:
           path: /opt/monitoring/fluentd/
-        name: fluentd-custom
         tag: latest
 
     - name: Запустить monitoring stack
-      community.docker.docker_compose:
+      docker_compose:
         project_src: /opt/monitoring/
