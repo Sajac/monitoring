@@ -1,6 +1,21 @@
-- name: Установка Fluentd и системы мониторинга
+- name: Развёртывание мониторинга и логов в контейнерах
   hosts: localhost
   become: true
 
-  roles:
-    - monitoring
+  tasks:
+    - name: Копировать docker-compose и конфиги
+      copy:
+        src: ./monitoring/
+        dest: /opt/monitoring/
+        mode: '0755'
+
+    - name: Собрать Fluentd образ (с Prometheus-плагином)
+      community.docker.docker_image:
+        build:
+          path: /opt/monitoring/fluentd
+        name: fluentd-custom
+        tag: latest
+
+    - name: Запустить monitoring stack
+      community.docker.docker_compose:
+        project_src: /opt/monitoring/
