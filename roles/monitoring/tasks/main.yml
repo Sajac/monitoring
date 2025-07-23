@@ -1,11 +1,16 @@
+- name: Копировать docker-compose и конфиги
+  copy:
+    src: ./monitoring/
+    dest: /opt/monitoring/
+    mode: '0755'
 
 - name: Собрать Fluentd образ (с Prometheus-плагином)
   community.docker.docker_image:
     build:
-      path: ../files
+      path: /opt/monitoring/
     name: fluentd-custom
     tag: latest
 
 - name: Запустить мониторинг
   community.docker.docker_compose:
-    project_src: ../files
+    project_src: /opt/monitoring/
