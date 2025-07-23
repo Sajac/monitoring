@@ -1,6 +1,6 @@
 services:
   fluentd:
-    build: .
+    image: sajac/fluentd
     container_name: fluentd
     ports:
       - "24231:24231"       
