@@ -1,0 +1,21 @@
+- name: Установить td-agent (Fluentd)
+  shell: |
+    curl -fsSL https://toolbelt.treasuredata.com/sh/install-ubuntu-focal-fluent-package5-lts.sh | sh
+  args:
+    executable: /bin/bash
+
+
+- name: Копировать конфигурацию Fluentd
+  copy:
+    src: td-agent.conf
+    dest: /etc/td-agent/td-agent.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+- name: Убедиться, что td-agent запущен
+  systemd:
+    name: td-agent
+    enabled: yes
+    state: restarted

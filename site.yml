@@ -1,0 +1,7 @@
+- name: Установка Fluentd и системы мониторинга
+  hosts: localhost
+  become: true
+
+  roles:
+    - fluentd
+    - monitoring
