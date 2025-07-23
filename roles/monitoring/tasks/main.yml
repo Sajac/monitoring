@@ -1,3 +1,11 @@
+
+- name: Собрать Fluentd образ (с Prometheus-плагином)
+  community.docker.docker_image:
+    build:
+      path: ../monitoring
+    name: fluentd-custom
+    tag: latest
+
 - name: Запустить мониторинг
   community.docker.docker_compose:
     project_src: ../monitoring

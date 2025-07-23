@@ -1,4 +1,17 @@
 services:
+  fluentd:
+    build: .
+    container_name: fluentd
+    ports:
+      - "24231:24231"       
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/log:/fluentd/log
+    environment:
+      - FLUENTD_CONF=fluent.conf
+    networks:
+      - monitoring
   prometheus:
     image: bitnami/prometheus:3.5.0
     volumes:
