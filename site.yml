@@ -12,7 +12,7 @@
     - name: Собрать Fluentd образ (с Prometheus-плагином)
       community.docker.docker_image:
         build:
-          path: /opt/monitoring/fluentd
+          path: /opt/monitoring/fluentd/
         name: fluentd-custom
         tag: latest
 
