@@ -1,7 +1,7 @@
 services:
   logstash:
-    image: logstash/logstash:9.0.4
-    container_name: logstash
+    image: logstash:9.0.4
+    container_name: logstasha
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     volumes:
