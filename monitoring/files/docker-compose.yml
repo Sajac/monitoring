@@ -6,7 +6,7 @@ services:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     volumes:
       - /opt/monitoring/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - /opt/monitoring/logstash/pipeline.conf:/usr/share/logstash/pipeline
+      - /opt/monitoring/logstash/pipeline.conf:/usr/share/logstash/pipeline/pipeline.conf
       - /var/log/logstash:/var/log/logstash
     ports:
       - "5044:5044"   # Для Beats input (если нужно)
