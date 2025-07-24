@@ -3,6 +3,8 @@ services:
     image: sajac/fluentd
     container_name: fluentd
     restart: unless-stopped
+    networks:
+      - monitoring
     ports:  
       - "24220:24220"     
     volumes:
@@ -11,18 +13,13 @@ services:
       - /opt/monitoring/fluentd/log:/var/log/
     environment:
       - FLUENTD_CONF=fluent.conf
-    networks:
-      - monitoring
-    logging:
-      driver: fluentd
-      options:
-        fluentd-address: fluentd:24224
-        tag: docker.prometheus
  
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
     restart: unless-stopped
+    networks:
+      - monitoring
     depends_on: 
     - fluentd
     ports:
@@ -31,8 +28,12 @@ services:
       - /opt/monitoring/prometheus.yml:/opt/config/prometheus.yml
     command:
       - '--config.file=/opt/config/prometheus.yml'
-    networks:
-      - monitoring
+
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: fluentd:24224
+        tag: docker.prometheus
  
   grafana:
     image: grafana/grafana:latest
