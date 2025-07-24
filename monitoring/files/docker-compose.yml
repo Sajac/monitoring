@@ -6,7 +6,7 @@ services:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     volumes:
       - /opt/monitoring/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - /opt/monitoring/logstash/pipeline.conf:/usr/share/logstash/pipeline/pipeline.conf
+      - /opt/monitoring/logstash/pipeline.conf:/usr/share/logstash/pipeline.conf
       - /var/log/logstash:/var/log/logstash
     ports:
       - "5044:5044"   # Для Beats input (если нужно)
@@ -29,10 +29,10 @@ services:
     command:
       - '--config.file=/opt/config/prometheus.yml'
     logging:
-      driver: json-file
+      driver: "json-file"
       options:
-        max-size: 10m
-        max-file: 3
+        max-size: "10m"
+        max-file: "3"
         tag: "{{.Name}}"
 
   grafana:
@@ -46,10 +46,10 @@ services:
     networks:
       - monitoring
     logging:
-      driver: json-file
+      driver: "json-file"
       options:
-        max-size: 10m
-        max-file: 3
+        max-size: "10m"
+        max-file: "3"
         tag: "{{.Name}}"
 
 networks:
