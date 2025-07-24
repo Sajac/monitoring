@@ -18,7 +18,7 @@ services:
     depends_on: 
     - fluentd
     ports:
-    - "9050:9050"   
+    - "9090:9090"   
     volumes:
       - /opt/monitoring/prometheus.yml:/opt/config/prometheus.yml
     command:
