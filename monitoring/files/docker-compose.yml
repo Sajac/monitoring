@@ -15,7 +15,7 @@ services:
       - monitoring
 
   logstash-exporter:
-    image: kuskoman/logstash-exporter
+    image: kuskoman/logstash-exporter:v1.9.0
     container_name: logstasha-exporter
     depends_on: 
     - logstash
