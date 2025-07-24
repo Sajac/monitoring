@@ -28,11 +28,6 @@ services:
       - '--config.file=/opt/config/prometheus.yml'
     networks:
       - monitoring
-    logging:
-      driver: fluentd
-      options:
-        fluentd-address: fluentd:24224
-        tag: docker.prometheus
  
   grafana:
     image: grafana/grafana:latest
