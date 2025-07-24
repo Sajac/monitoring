@@ -12,10 +12,10 @@
       ansible.builtin.file:
         path: /opt/monitoring/fluentd/log
         state: directory
-        owner: fluent  # Владелец — fluent
-        group: fluent  # Группа — fluent (можно оставить как есть, например, root)
+        owner: 1000  # Владелец — fluent
+        group: 1000  # Группа — fluent (можно оставить как есть, например, root)
         mode: '0700' 
-        
+
     - name: Запустить мониторинг
       shell: |
         cd /opt/monitoring/files
