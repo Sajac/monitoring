@@ -4,10 +4,9 @@
 
   tasks:
     - name: Копировать docker-compose и конфиги
-      synchronize:
-        src: ./monitoring/
-        dest: /opt/monitoring/
-        recursive: yes
+      copy:
+        src: ./monitoring
+        dest: /opt/monitoring
 
     # - name: Собрать Fluentd образ (с Prometheus-плагином)
     #   docker_image:
