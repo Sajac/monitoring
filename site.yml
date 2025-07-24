@@ -9,13 +9,13 @@
         dest: /opt/monitoring/
         recursive: yes
 
-    # - name: Собрать Fluentd образ (с Prometheus-плагином)
-    #   docker_image:
-    #     name: fluentd-custom
-    #     source: build
-    #     build:
-    #       path: /opt/monitoring/fluentd/
-    #     tag: latest
+    - name: Собрать Fluentd образ (с Prometheus-плагином)
+      docker_image:
+        name: fluentd-custom
+        source: build
+        build:
+          path: /opt/monitoring/fluentd/
+        tag: latest
 
     - name: Запустить monitoring stack
       docker_compose:

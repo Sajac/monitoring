@@ -4,13 +4,14 @@
     dest: /opt/monitoring/
     mode: '0755'
 
-- name: Собрать Fluentd образ (с Prometheus-плагином)
-  community.docker.docker_image:
-    build:
-      path: /opt/monitoring/
-    name: fluentd-custom
-    tag: latest
+# - name: Собрать Fluentd образ (с Prometheus-плагином)
+#   community.docker.docker_image:
+#     build:
+#       path: /opt/monitoring/
+#     name: fluentd-custom
+#     tag: latest
 
 - name: Запустить мониторинг
-  community.docker.docker_compose:
-    project_src: /opt/monitoring/
+  shell: |
+    cd /opt/monitoring/files
+    docker-compose up -d
