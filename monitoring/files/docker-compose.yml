@@ -13,6 +13,11 @@ services:
       - FLUENTD_CONF=fluent.conf
     networks:
       - monitoring
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: fluentd:24224
+        tag: docker.prometheus
  
   prometheus:
     image: prom/prometheus:latest
@@ -39,6 +44,11 @@ services:
       - "3000:3000"
     networks:
       - monitoring
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: fluentd:24224
+        tag: docker.grafana
 
 networks:
   monitoring:
