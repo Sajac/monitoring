@@ -6,8 +6,7 @@ services:
     networks:
       - monitoring
     ports:  
-      - "24220:24220"
-      - "24224:24224"     
+      - "24220:24220"     
     volumes:
       - /opt/monitoring/fluentd/conf:/fluentd/etc
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
@@ -29,11 +28,6 @@ services:
       - /opt/monitoring/prometheus.yml:/opt/config/prometheus.yml
     command:
       - '--config.file=/opt/config/prometheus.yml'
-    logging:
-      driver: fluentd
-      options:
-        fluentd-address: fluentd:24224
-        tag: docker.prometheus
  
   grafana:
     image: grafana/grafana:latest
@@ -45,11 +39,6 @@ services:
       - "3000:3000"
     networks:
       - monitoring
-    logging:
-      driver: fluentd
-      options:
-        fluentd-address: fluentd:24224
-        tag: docker.grafana
 
 networks:
   monitoring:
