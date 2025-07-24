@@ -1,6 +1,6 @@
 services:
   fluentd:
-    image: sajac/fluentd:latest
+    image: bitnami/fluentd:latest
     container_name: fluentd
     restart: unless-stopped
     privileged: true
