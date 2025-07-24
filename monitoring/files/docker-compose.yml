@@ -10,7 +10,7 @@ services:
     volumes:
       - /opt/monitoring/fluentd/conf:/fluentd/etc
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
-      - /opt/monitoring/fluentd/log:/var/log/
+      - /var/log/containers.log:/var/log/containers.log
     environment:
       - FLUENTD_CONF=fluent.conf
  
