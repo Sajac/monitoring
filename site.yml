@@ -17,4 +17,5 @@
     - name: Запустить мониторинг
       shell: |
         cd /opt/monitoring/files
+        docoker network create monitoring
         docker-compose up -d
