@@ -14,6 +14,19 @@ services:
     networks:
       - monitoring
 
+  logstash-exporter:
+    image: prom/logstash-exporter
+    container_name: logstasha-exporter
+    depends_on: 
+    - logstash
+    ports:
+      - "9198:9198"
+    environment:
+      - LOGSTASH_HOST=logstash
+      - LOGSTASH_PORT=9600
+    networks:
+      - monitoring
+
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
