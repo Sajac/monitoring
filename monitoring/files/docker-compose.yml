@@ -15,9 +15,9 @@ services:
   prometheus:
     image: bitnami/prometheus:3.5.0
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/opt/config/prometheus.yml
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--config.file=/opt/config/prometheus.yml'
     ports:
       - "9090:9090"
     networks:
