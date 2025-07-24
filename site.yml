@@ -3,10 +3,10 @@
   become: true
 
   tasks:
-    - name: Копировать docker-compose и конфиги
-      copy:
-        src: ./monitoring
-        dest: /opt/
+    # - name: Копировать docker-compose и конфиги
+    #   copy:
+    #     src: ./monitoring
+    #     dest: /opt/
 
     # - name: Собрать Fluentd образ (с Prometheus-плагином)
     #   docker_image:
@@ -18,5 +18,4 @@
 
     - name: Запустить мониторинг
       shell: |
-        cd /opt/monitoring/files
         docker-compose up -d
