@@ -8,14 +8,6 @@
         src: ./monitoring
         dest: /opt/
 
-    # - name: Собрать Fluentd образ (с Prometheus-плагином)
-    #   docker_image:
-    #     name: fluentd-custom
-    #     source: build
-    #     build:
-    #       path: /opt/monitoring/fluentd/
-    #     tag: latest
-
     - name: Запустить мониторинг
       shell: |
         cd /opt/monitoring/files
