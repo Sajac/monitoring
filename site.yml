@@ -10,8 +10,9 @@
 
     - name: Запустить мониторинг
       shell: |
-        mkdir /opt/monitoring/fluentd/logs
-        chmod 777 /opt/monitoring/fluentd/logs
+        mkdir -p /var/log/logstash /var/log/prometheus
+        chown -R 1000:1000 /var/log/logstash
+        chown -R 65534:65534 /var/log/prometheus
         cd /opt/monitoring/files
         docoker network create monitoring
         docker-compose up -d

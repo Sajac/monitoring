@@ -2,7 +2,10 @@ global:
   scrape_interval: 15s
 
 scrape_configs:
-  - job_name: 'fluentd-metric'
-    metrics_path: /metrics
+  - job_name: 'logstash'
     static_configs:
-      - targets: ['fluentd:24220']
+      - targets: ['logstash:9600']
+  
+  - job_name: 'other_containers'
+    static_configs:
+      - targets: ['other-container:8080']

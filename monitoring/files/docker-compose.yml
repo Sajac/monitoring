@@ -1,21 +1,19 @@
 services:
-  fluentd:
-    image: bitnami/fluentd:latest
-    container_name: fluentd
-    restart: unless-stopped
-    privileged: true
-    user: root
+  logstash:
+    image: logstash/logstash:8.12.0
+    container_name: logstash
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    volumes:
+      - /opt/monitoring/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - /opt/monitoring/logstash/pipeline.conf:/usr/share/logstash/pipeline
+      - /var/log/logstash:/var/log/logstash
+    ports:
+      - "5044:5044"   # Для Beats input (если нужно)
+      - "9600:9600"    # Logstash API
     networks:
       - monitoring
-    ports:  
-      - "24220:24220"     
-    volumes:
-      - /opt/monitoring/fluentd/conf:/fluentd/etc
-      - /var/lib/docker/containers:/var/lib/docker/containers
-      - /opt/monitoring/fluentd/logs:/var/log 
-    environment:
-      - FLUENTD_CONF=fluent.conf
- 
+
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
@@ -23,14 +21,20 @@ services:
     networks:
       - monitoring
     depends_on: 
-    - fluentd
+    - logstash
     ports:
     - "9090:9090"   
     volumes:
       - /opt/monitoring/prometheus.yml:/opt/config/prometheus.yml
     command:
       - '--config.file=/opt/config/prometheus.yml'
- 
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+        tag: "{{.Name}}"
+
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -41,7 +45,13 @@ services:
       - "3000:3000"
     networks:
       - monitoring
-
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+        tag: "{{.Name}}"
+        
 networks:
   monitoring:
     external: true
