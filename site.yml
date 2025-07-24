@@ -8,14 +8,10 @@
         src: ./monitoring
         dest: /opt/
 
-    - name: Создать для логов
-      ansible.builtin.file:
-        path: /opt/monitoring/fluentd/log
-        state: directory
-        mode: '0777' 
-
     - name: Запустить мониторинг
       shell: |
+        touch -p /var/log/containers.log
+        chmod /var/log/containers.log
         cd /opt/monitoring/files
         docoker network create monitoring
         docker-compose up -d
