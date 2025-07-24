@@ -10,6 +10,8 @@
 
     - name: Запустить мониторинг
       shell: |
+        mkdir /opt/monitoring/fluentd/logs
+        chmod 777 /opt/monitoring/fluentd/logs
         cd /opt/monitoring/files
         docoker network create monitoring
         docker-compose up -d
