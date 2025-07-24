@@ -1,6 +1,6 @@
 services:
   fluentd:
-    image: sajac/fluentd
+    image: fluent/fluentd:v1.16-1
     container_name: fluentd
     restart: unless-stopped
     privileged: true
