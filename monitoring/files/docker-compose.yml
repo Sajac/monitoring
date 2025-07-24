@@ -6,7 +6,8 @@ services:
     networks:
       - monitoring
     ports:  
-      - "24220:24220"     
+      - "24220:24220"
+      - "24224:24224"     
     volumes:
       - /opt/monitoring/fluentd/conf:/fluentd/etc
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
@@ -52,4 +53,4 @@ services:
 
 networks:
   monitoring:
-    driver: bridge
+    external: true
