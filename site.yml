@@ -10,8 +10,8 @@
 
     - name: Запустить мониторинг
       shell: |
-        touch -p /var/log/containers.log/containers.log
-        chmod -R 777 /var/log/containers.log
+        mkdir /opt/monitoring/fluentd/logs
+        chmod 777 /opt/monitoring/fluentd/logs
         cd /opt/monitoring/files
         docoker network create monitoring
         docker-compose up -d
