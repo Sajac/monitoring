@@ -4,13 +4,14 @@ services:
     container_name: fluentd
     restart: unless-stopped
     privileged: true
+    user: root
     networks:
       - monitoring
     ports:  
       - "24220:24220"     
     volumes:
       - /opt/monitoring/fluentd/conf:/fluentd/etc
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers
       - /opt/monitoring/fluentd/logs:/var/log 
     environment:
       - FLUENTD_CONF=fluent.conf
