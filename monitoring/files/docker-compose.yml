@@ -28,7 +28,6 @@ services:
       - /opt/monitoring/prometheus.yml:/opt/config/prometheus.yml
     command:
       - '--config.file=/opt/config/prometheus.yml'
-
     logging:
       driver: fluentd
       options:
