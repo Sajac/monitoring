@@ -18,5 +18,5 @@
 
     - name: Запустить мониторинг
       shell: |
-        ./monitoring/files
+        cd ./monitoring/files
         docker-compose up -d
