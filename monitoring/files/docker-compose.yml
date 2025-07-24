@@ -5,7 +5,7 @@ services:
     ports:
       - "24231:24231"       
     volumes:
-      - ./fluentd/conf:/fluentd/etc
+      - /opt/monitoring/fluentd/conf:/fluentd/etc
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/log:/fluentd/log
     environment:
@@ -20,7 +20,7 @@ services:
     ports:
     - "9050:9050"   
     volumes:
-      - ./prometheus.yml:/opt/config/prometheus.yml
+      - /opt/monitoring/prometheus.yml:/opt/config/prometheus.yml
     command:
       - '--config.file=/opt/config/prometheus.yml'
     networks:
