@@ -15,7 +15,7 @@ services:
       - monitoring
 
   logstash-exporter:
-    image: prom/logstash-exporter
+    image: kuskoman/logstash-exporter
     container_name: logstasha-exporter
     depends_on: 
     - logstash
