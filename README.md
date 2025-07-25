@@ -19,8 +19,8 @@ ansible-playbook site.yml
 docker ps 
 ```
 # Инструкция Grafana
-Для просмотра метрик необходимо подключиться к Grafana `http://serverip` стандартный логин/пароль для входа `admin/admin` и настроить Data Sources => Add Data source => Prometheus => в поле Prometheus server URL ввести `http://prometheus:9090` => внизу страницы Save & test.<br>
-Перейти в раздел Metrics, где отображены все доступные метрики.<br>
+Для просмотра метрик необходимо подключиться к Grafana `http://serverip` стандартный логин/пароль для входа `admin/admin` и настроить Connections => Data Sources => Add Data source => Prometheus => в поле Prometheus server URL ввести `http://prometheus:9090` => внизу страницы Save & test.<br>
+Перейти в раздел Drilldown => Metrics, где отображены все доступные метрики.<br>
 Выборочно метрики, например, `process_virtual_memory_bytes`,`process_cpu_seconds_total` можно посмотреть в разделе Explore.
 
 # Логи контейнеров 
