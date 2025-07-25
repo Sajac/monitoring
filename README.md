@@ -1,4 +1,4 @@
-## Мониторинг Grafana + Prometheus + Logstash
+# Мониторинг Grafana + Prometheus + Logstash
 Система мониторинга Grafana + Prometheus + Logstash для сбора метрик 
 
 # Предварительные требования 
@@ -19,9 +19,9 @@ ansible-playbook site.yaml
 docker ps 
 ```
 # Инструкция Grafana
-Для просмотра метрик необходимо подключиться к Grafana `http://serverip` стандартный логин/пароль для входа `admin/admin` и настроить Data Sources => Add Data source => Prometheus => в поле Prometheus server URL ввести `http://prometheus:9090` => внизу страницы Save & test.
-Перейти в раздел Metrics, где отображены все доступные метрики 
+Для просмотра метрик необходимо подключиться к Grafana `http://serverip` стандартный логин/пароль для входа `admin/admin` и настроить Data Sources => Add Data source => Prometheus => в поле Prometheus server URL ввести `http://prometheus:9090` => внизу страницы Save & test.<br>
+Перейти в раздел Metrics, где отображены все доступные метрики<br>
 Выборочно метрики, например, `process_virtual_memory_bytes`,`process_cpu_seconds_total` можно посмотреть в разделе Explore 
 
 # Логи контейнеров 
-Логи контейнеров доступны на сервере по пути `/var/log/logstash`
+Логи контейнеров хранятся на сервере в формате `container_name.log` и доступны по пути `/var/log/logstash`
