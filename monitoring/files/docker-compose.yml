@@ -2,6 +2,8 @@ services:
   logstash:
     image: logstash:9.0.4
     container_name: logstash
+    privileged: true
+    user: root
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     volumes:
@@ -17,6 +19,8 @@ services:
   logstash-exporter:
     image: kuskoman/logstash-exporter:v1.9.0
     container_name: logstash-exporter
+    privileged: true
+    user: root
     depends_on: 
     - logstash
     ports:
