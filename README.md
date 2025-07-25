@@ -24,4 +24,4 @@ docker ps
 Выборочно метрики, например, `process_virtual_memory_bytes`,`process_cpu_seconds_total` можно посмотреть в разделе Explore.
 
 # Логи контейнеров 
-Логи контейнеров хранятся на сервере в формате `container_name.log` и доступны по пути `/var/log/logstash`.
+Логи всех контейнеров хранятся отдельно на сервере в формате `container_name.log` и доступны по пути `/var/log/logstash`.
