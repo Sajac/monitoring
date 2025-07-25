@@ -1,5 +1,5 @@
 # Мониторинг Grafana + Prometheus + Logstash
-Система мониторинга Grafana + Prometheus + Logstash для сбора метрик 
+Система мониторинга Grafana + Prometheus + Logstash для сбора метрик через logstash-exporter
 
 # Предварительные требования 
 Должны быть установлены docker, docker-compose, ansible, git<br>
