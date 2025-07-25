@@ -9,8 +9,8 @@ services:
       - /opt/monitoring/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
       - /opt/monitoring/logstash/pipeline.conf:/usr/share/logstash/pipeline.conf
       - /var/log/logstash:/var/log/logstash
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
     ports:
-      - "5044:5044"   # Для Beats input (если нужно)
       - "9600:9600"    # Logstash API
     networks:
       - monitoring
