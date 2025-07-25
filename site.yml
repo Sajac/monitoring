@@ -13,6 +13,8 @@
         mkdir -p /var/log/logstash /var/log/prometheus
         chown -R 1000:1000 /var/log/logstash
         chown -R 65534:65534 /var/log/prometheus
+        chmod 777 /var/log/logstash
+        chmod 777 /var/log/prometheus
         cd /opt/monitoring/files
         docker network create monitoring
         docker-compose up -d
