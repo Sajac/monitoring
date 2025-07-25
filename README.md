@@ -12,7 +12,7 @@ git clone https://github.com/Sajac/monitoring.git
 Перейдите в папку с проектом и запустите установку:
 ```
 cd monitoring
-ansible-playbook site.yaml
+ansible-playbook site.yml
 ```
 Проверка, что все контейнера запустились:
 ```
